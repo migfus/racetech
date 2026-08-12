@@ -14,8 +14,7 @@ class HandleAppearance
      *
      * @param  Closure(Request): (Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
-    {
+    public function handle(Request $request, Closure $next): Response {
         View::share('appearance', $request->cookie('appearance') ?? 'system');
 
         return $next($request);
