@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { ChevronDown } from "@lucide/vue"
+import { SelectIcon, SelectTrigger, useForwardProps } from "reka-ui"
+
 import type { SelectTriggerProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
-import { ChevronDown } from "@lucide/vue"
 import { reactiveOmit } from "@vueuse/core"
-import { SelectIcon, SelectTrigger, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
 
 const props = withDefaults(

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { usePage } from '@inertiajs/vue3'
-import { computed } from 'vue'
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
@@ -11,6 +10,8 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 import UserMenuContent from '@/components/UserMenuContent.vue'
+
+import { computed } from 'vue'
 import { getInitials } from '@/composables/useInitials'
 import type { BreadcrumbItem } from '@/types'
 

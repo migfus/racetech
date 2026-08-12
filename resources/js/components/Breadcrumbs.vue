@@ -8,6 +8,7 @@ import {
     BreadcrumbPage,
     BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
+
 import type { BreadcrumbItem as BreadcrumbItemType } from '@/types'
 
 type Props = {

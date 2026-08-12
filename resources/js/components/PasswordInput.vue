@@ -3,6 +3,7 @@ import { Eye, EyeOff } from '@lucide/vue'
 import { ref, useTemplateRef } from 'vue'
 import type { HTMLAttributes } from 'vue'
 import { Input } from '@/components/ui/input'
+
 import { cn } from '@/lib/utils'
 
 defineOptions({ inheritAttrs: false })
