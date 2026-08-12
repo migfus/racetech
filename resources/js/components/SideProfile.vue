@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { TrendingUp } from '@lucide/vue'
+import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
 import {
     CardContent,
     CardDescription,
@@ -14,8 +16,6 @@ import {
     ChartTooltipContent,
     componentToString,
 } from '@/components/ui/chart'
-import { TrendingUp } from '@lucide/vue'
-import { VisAxis, VisGroupedBar, VisXYContainer } from '@unovis/vue'
 
 const chartData = [
     { date: new Date('2024-01-01'), desktop: 186 },
