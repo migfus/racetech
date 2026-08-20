@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { usePage } from '@inertiajs/vue3'
-import Breadcrumbs from '@/components/Breadcrumbs.vue'
+import AppLogo from '@/components/AppLogo.vue'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import {
@@ -8,12 +7,14 @@ import {
     DropdownMenuContent,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { SidebarTrigger } from '@/components/ui/sidebar'
 import UserMenuContent from '@/components/UserMenuContent.vue'
+import { usePage } from '@inertiajs/vue3'
 
-import { computed } from 'vue'
 import { getInitials } from '@/composables/useInitials'
 import type { BreadcrumbItem } from '@/types'
+import { Icon } from '@iconify/vue'
+import { computed } from 'vue'
+import Badge from './ui/badge/Badge.vue'
 
 withDefaults(
     defineProps<{
@@ -30,16 +31,49 @@ const auth = computed(() => page.props.auth)
 
 <template>
     <header
-        class="flex h-16 shrink-0 items-center gap-2 border-b border-sidebar-border/70 px-6 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12 md:px-4"
+        class="sticky top-0 z-30 flex h-16 shrink-0 items-center gap-2 border-b border-sidebar-border/70 bg-background/95 px-6 backdrop-blur supports-[backdrop-filter]:bg-background/80 md:px-4"
     >
         <div class="flex items-center gap-2">
-            <SidebarTrigger class="-ml-1" />
-            <template v-if="breadcrumbs && breadcrumbs.length > 0">
+            <!-- <template v-if="breadcrumbs && breadcrumbs.length > 0">
                 <Breadcrumbs :breadcrumbs="breadcrumbs" />
-            </template>
+            </template> -->
+            <!-- <Link :href="dashboard()"> -->
+            <AppLogo />
+            <!-- </Link> -->
         </div>
 
-        <div class="ml-auto">
+        <div class="ml-auto flex items-center">
+            <Badge variant="secondary" class="mr-2">Beta</Badge>
+            <DropdownMenu>
+                <DropdownMenuTrigger :as-child="true">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        class="relative size-10 rounded-full p-1 focus-within:ring-2 focus-within:ring-primary"
+                    >
+                        <Icon icon="lucide:message-circle" class="h-6 w-6" />
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" class="w-56">
+                    <UserMenuContent :user="auth.user" />
+                </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+                <DropdownMenuTrigger :as-child="true">
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        class="relative size-10 rounded-full p-1 focus-within:ring-2 focus-within:ring-primary"
+                    >
+                        <Icon icon="lucide:bell" class="h-6 w-6" />
+                    </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" class="w-56">
+                    <UserMenuContent :user="auth.user" />
+                </DropdownMenuContent>
+            </DropdownMenu>
+
             <DropdownMenu>
                 <DropdownMenuTrigger :as-child="true">
                     <Button

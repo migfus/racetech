@@ -7,11 +7,13 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar'
+import { Icon } from '@iconify/vue'
 
 import { useCurrentUrl } from '@/composables/useCurrentUrl'
 import type { NavItem } from '@/types'
 
 defineProps<{
+    title: string
     items: NavItem[]
 }>()
 
@@ -20,7 +22,7 @@ const { isCurrentUrl } = useCurrentUrl()
 
 <template>
     <SidebarGroup class="px-2 py-0">
-        <SidebarGroupLabel>Platform</SidebarGroupLabel>
+        <SidebarGroupLabel>{{ title }}</SidebarGroupLabel>
         <SidebarMenu>
             <SidebarMenuItem v-for="item in items" :key="item.title">
                 <SidebarMenuButton
@@ -29,7 +31,7 @@ const { isCurrentUrl } = useCurrentUrl()
                     :tooltip="item.title"
                 >
                     <Link :href="item.href">
-                        <component :is="item.icon" />
+                        <Icon v-if="item.icon" :icon="item.icon" />
                         <span>{{ item.title }}</span>
                     </Link>
                 </SidebarMenuButton>
